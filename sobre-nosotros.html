@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre Nosotros — COINAM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="icon" href="assets/imgs/favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Hero estático para páginas interiores */
+    .page-hero {
+      position: relative;
+      height: 60vh;
+      min-height: 420px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .page-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .page-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(8,15,23,0.80) 0%,
+        rgba(8,15,23,0.45) 60%,
+        rgba(8,15,23,0.20) 100%
+      );
+      z-index: 1;
+    }
+    .page-hero-content {
+      position: relative;
+      z-index: 10;
+      padding: 0 4rem;
+      max-width: 700px;
+    }
+    .page-hero-content .hero-eyebrow { margin-bottom: 1rem; }
+    .page-hero-content h1 {
+      font-family: 'Lato', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+    }
+    .page-hero-content h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    /* Línea decorativa inferior */
+    .page-hero-line {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--gold));
+      z-index: 10;
+    }
+
+    /* Sección intro centrada */
+    .about-intro {
+      background: linear-gradient(180deg, #0d1b2a 0%, #0a1520 100%);
+      padding: 8rem 4rem 4rem;
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .about-intro.visible { opacity: 1; transform: translateY(0); }
+    .about-intro p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .about-intro p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* Valores / cards */
+    .values-wrapper {
+      background: linear-gradient(180deg, #0a1520 0%, #0d1b2a 100%);
+      padding: 4rem 4rem 8rem;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .values-grid.visible { opacity: 1; transform: translateY(0); }
+    .value-card {
+      background: var(--mid);
+      border: 1px solid rgba(251,215,132,0.12);
+      border-radius: 6px;
+      padding: 2.4rem 2rem;
+      transition: border-color 0.25s;
+    }
+    .value-card:hover { border-color: rgba(251,215,132,0.4); }
+    .value-card .value-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+    }
+    .value-card h3 {
+      font-family: 'Lato', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+      color: var(--text);
+    }
+    .value-card p {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    /* Sección misión / visión */
+    .mv-wrapper {
+      background: linear-gradient(180deg, #0d1b2a 0%, #0a1520 100%);
+      padding: 0 0 8rem;
+    }
+
+    /* Nav link activo */
+    .nav-links a.active { color: var(--gold); }
+
+    @media (max-width: 900px) {
+      .page-hero-content { padding: 0 2rem; }
+      .about-intro { padding: 6rem 2rem 3rem; }
+      .values-wrapper { padding: 3rem 2rem 6rem; }
+      .values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo"><img src="assets/imgs/logo-transparente.png" alt="COINAM logo" width="70" height="60" /> COINAM</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="sobre-nosotros.html" class="active">Sobre nosotros</a></li>
+    <li><a href="index.html#sections" onclick="sessionStorage.setItem('scrollTo','sections')">Servicios</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+  <div class="nav-social">Tu mejor aliado</div>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <img class="page-hero-img" src="./assets/imgs/hands.jpg" alt="Sobre nosotros" />
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <p class="hero-eyebrow">Quiénes somos</p>
+    <h1>Sobre <em>nosotros.</em></h1>
+  </div>
+  <div class="page-hero-line"></div>
+</section>
+
+<!-- INTRO -->
+<div style="background: linear-gradient(180deg, #0d1b2a 0%, #0a1520 100%); padding-top: 1px;">
+  <div class="about-intro" data-section>
+    <p class="section-number" style="justify-content:center;">COINAM</p>
+    <h2 class="section-heading" style="margin-bottom:2rem;">Consultoría Integral en<br/><em style="color:var(--gold);font-style:italic;">Ingeniería Ambiental</em></h2>
+    <p>
+      Somos un equipo multidisciplinario con amplia trayectoria en el sector ambiental, técnico, legal y de seguridad ocupacional.
+      Nuestro compromiso es brindar soluciones integrales y sostenibles que permitan a las organizaciones crecer
+      <strong>en armonía con el ambiente y el marco legal vigente</strong>.
+    </p>
+    <p>
+      Desde COINAM acompañamos a empresas de todos los tamaños en el diseño, implementación y mejora continua de sus sistemas de gestión,
+      ayudándolas a cumplir con normativas nacionales e internacionales y a alcanzar estándares de excelencia operativa.
+    </p>
+    <p>
+      Creemos que la consultoría ambiental es una herramienta de transformación: no solo garantiza el cumplimiento legal,
+      sino que habilita a las organizaciones a generar <strong>valor real a partir de la sustentabilidad</strong>.
+    </p>
+  </div>
+</div>
+
+<!-- VALORES -->
+<div class="values-wrapper">
+  <div style="max-width:1100px; margin:0 auto 3rem; padding:0;">
+    <p class="section-number" style="padding:0 0 0.5rem;">Nuestros pilares</p>
+    <h2 class="section-heading">Lo que nos <em style="color:var(--gold);font-style:italic;">define.</em></h2>
+  </div>
+  <div class="values-grid" data-section>
+    <div class="value-card">
+      <div class="value-icon">01</div>
+      <h3>Compromiso ambiental</h3>
+      <p>Trabajamos con la convicción de que cada decisión empresarial puede contribuir a un entorno más limpio y sustentable para las generaciones futuras.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">02</div>
+      <h3>Excelencia técnica</h3>
+      <p>Contamos con profesionales especializados en ingeniería ambiental, química, biología y derecho ambiental, comprometidos con la rigurosidad y la actualización permanente.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">03</div>
+      <h3>Soluciones integrales</h3>
+      <p>Abordamos cada proyecto de forma holística, integrando los aspectos técnicos, legales, ambientales y operativos para ofrecer respuestas completas y eficientes.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">04</div>
+      <h3>Confianza y transparencia</h3>
+      <p>Construimos relaciones de largo plazo con nuestros clientes basadas en la honestidad, la comunicación clara y el cumplimiento de cada compromiso asumido.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">05</div>
+      <h3>Innovación continua</h3>
+      <p>Incorporamos constantemente nuevas herramientas y metodologías —como economía circular, huella hídrica y huellas de carbono— para anticiparnos a los desafíos del futuro.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">06</div>
+      <h3>Impacto real</h3>
+      <p>Medimos nuestro éxito en función de los resultados concretos que logramos para nuestros clientes y el impacto positivo que generamos en el ambiente y la sociedad.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MISIÓN / VISIÓN -->
+<div class="mv-wrapper">
+  <article class="section-item" data-section>
+    <div class="section-text">
+      <p class="section-number">Misión</p>
+      <h2 class="section-heading">Ser el aliado estratégico<br/>de cada <em style="color:var(--gold);font-style:italic;">organización.</em></h2>
+      <p class="section-body">
+        Nuestra misión es acompañar a las empresas en su camino hacia la sustentabilidad y el cumplimiento normativo,
+        ofreciendo un servicio personalizado, riguroso y orientado a resultados.
+        Queremos ser el socio de confianza que potencia el crecimiento responsable de cada cliente.
+      </p>
+    </div>
+    <div class="section-visual">
+      <div class="section-img-wrap">
+        <img src="./assets/imgs/soil.jpg" alt="Misión COINAM" style="width:100%;height:100%;object-fit:cover;display:block;" />
+      </div>
+      <div class="section-badge">M</div>
+    </div>
+  </article>
+
+  <div class="divider"></div>
+
+  <article class="section-item" data-section>
+    <div class="section-text">
+      <p class="section-number">Visión</p>
+      <h2 class="section-heading">Un mundo mejor, empresa<br/>por <em style="color:var(--gold);font-style:italic;">empresa.</em></h2>
+      <p class="section-body">
+        Visualizamos un futuro en el que cada organización opere en plena armonía con el ambiente,
+        cumpliendo los más altos estándares de gestión y seguridad. En COINAM trabajamos cada día
+        para que esa visión sea una realidad alcanzable y medible.
+      </p>
+    </div>
+    <div class="section-visual">
+      <div class="section-img-wrap">
+        <img src="./assets/imgs/huella.jpg" alt="Visión COINAM" style="width:100%;height:100%;object-fit:cover;display:block;" />
+      </div>
+      <div class="section-badge">V</div>
+    </div>
+  </article>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">MN<span>T</span>N</div>
+  <ul class="footer-links">
+    <li><a href="#">Privacy Policy</a></li>
+    <li><a href="#">Terms of Use</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <p class="footer-copy">&copy; 2024 MNTN. All rights reserved.</p>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
