@@ -107,31 +107,34 @@
     }
     .values-grid.visible { opacity: 1; transform: translateY(0); }
     .value-card {
-      background: var(--mid);
-      border: 1px solid rgba(251,215,132,0.12);
-      border-radius: 6px;
-      padding: 2.4rem 2rem;
-      transition: border-color 0.25s;
+      background: transparent;
+      border: none;
+      border-left: 2px solid rgba(251,215,132,0.25);
+      border-radius: 0;
+      padding: 0 0 0 1.8rem;
+      transition: border-color 0.3s;
     }
-    .value-card:hover { border-color: rgba(251,215,132,0.4); }
-    .value-card .value-icon {
-      font-size: 1.8rem;
-      margin-bottom: 1.2rem;
+    .value-card:hover { border-left-color: var(--gold); }
+    .value-card .value-num {
+      font-size: 0.68rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.2em;
       color: var(--gold);
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
+      margin-bottom: 1rem;
+      display: block;
     }
     .value-card h3 {
       font-family: 'Lato', sans-serif;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.7rem;
       color: var(--text);
     }
     .value-card p {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       line-height: 1.75;
       color: var(--muted);
     }
@@ -171,7 +174,7 @@
 
 <!-- HERO -->
 <section class="page-hero">
-  <img class="page-hero-img" src="./assets/imgs/hands.jpg" alt="Sobre nosotros" />
+  <img class="page-hero-img" src="./assets/imgs/us.jpeg" alt="Sobre nosotros" />
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content">
     <p class="hero-eyebrow">Quiénes somos</p>
@@ -183,7 +186,7 @@
 <!-- INTRO -->
 <div style="background: linear-gradient(180deg, #0d1b2a 0%, #0a1520 100%); padding-top: 1px;">
   <div class="about-intro" data-section>
-    <p class="section-number" style="justify-content:center;">COINAM</p>
+    <p class="section-number" style="justify-content:center;"><span class="brand">COINAM</span></p>
     <h2 class="section-heading" style="margin-bottom:2rem;">Consultoría Integral en<br/><em style="color:var(--gold);font-style:italic;">Ingeniería Ambiental</em></h2>
     <p>
       Somos un equipo multidisciplinario con amplia trayectoria en el sector ambiental, técnico, legal y de seguridad ocupacional.
@@ -191,7 +194,7 @@
       <strong>en armonía con el ambiente y el marco legal vigente</strong>.
     </p>
     <p>
-      Desde COINAM acompañamos a empresas de todos los tamaños en el diseño, implementación y mejora continua de sus sistemas de gestión,
+      Desde <span class="brand">COINAM</span> acompañamos a empresas de todos los tamaños en el diseño, implementación y mejora continua de sus sistemas de gestión,
       ayudándolas a cumplir con normativas nacionales e internacionales y a alcanzar estándares de excelencia operativa.
     </p>
     <p>
@@ -209,32 +212,32 @@
   </div>
   <div class="values-grid" data-section>
     <div class="value-card">
-      <div class="value-icon">01</div>
+      <span class="value-num">01</span>
       <h3>Compromiso ambiental</h3>
       <p>Trabajamos con la convicción de que cada decisión empresarial puede contribuir a un entorno más limpio y sustentable para las generaciones futuras.</p>
     </div>
     <div class="value-card">
-      <div class="value-icon">02</div>
+      <span class="value-num">02</span>
       <h3>Excelencia técnica</h3>
       <p>Contamos con profesionales especializados en ingeniería ambiental, química, biología y derecho ambiental, comprometidos con la rigurosidad y la actualización permanente.</p>
     </div>
     <div class="value-card">
-      <div class="value-icon">03</div>
+      <span class="value-num">03</span>
       <h3>Soluciones integrales</h3>
       <p>Abordamos cada proyecto de forma holística, integrando los aspectos técnicos, legales, ambientales y operativos para ofrecer respuestas completas y eficientes.</p>
     </div>
     <div class="value-card">
-      <div class="value-icon">04</div>
+      <span class="value-num">04</span>
       <h3>Confianza y transparencia</h3>
       <p>Construimos relaciones de largo plazo con nuestros clientes basadas en la honestidad, la comunicación clara y el cumplimiento de cada compromiso asumido.</p>
     </div>
     <div class="value-card">
-      <div class="value-icon">05</div>
+      <span class="value-num">05</span>
       <h3>Innovación continua</h3>
       <p>Incorporamos constantemente nuevas herramientas y metodologías —como economía circular, huella hídrica y huellas de carbono— para anticiparnos a los desafíos del futuro.</p>
     </div>
     <div class="value-card">
-      <div class="value-icon">06</div>
+      <span class="value-num">06</span>
       <h3>Impacto real</h3>
       <p>Medimos nuestro éxito en función de los resultados concretos que logramos para nuestros clientes y el impacto positivo que generamos en el ambiente y la sociedad.</p>
     </div>
@@ -255,9 +258,9 @@
     </div>
     <div class="section-visual">
       <div class="section-img-wrap">
-        <img src="./assets/imgs/soil.jpg" alt="Misión COINAM" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <img src="./assets/imgs/about-us.jpg" alt="Misión COINAM" style="width:100%;height:100%;object-fit:cover;display:block;" />
       </div>
-      <div class="section-badge">M</div>
+      <div class="section-badge"><img src="assets/imgs/logo-transparente.png" alt="COINAM" /></div>
     </div>
   </article>
 
@@ -269,28 +272,28 @@
       <h2 class="section-heading">Un mundo mejor, empresa<br/>por <em style="color:var(--gold);font-style:italic;">empresa.</em></h2>
       <p class="section-body">
         Visualizamos un futuro en el que cada organización opere en plena armonía con el ambiente,
-        cumpliendo los más altos estándares de gestión y seguridad. En COINAM trabajamos cada día
+        cumpliendo los más altos estándares de gestión y seguridad. En <span class="brand">COINAM</span> trabajamos cada día
         para que esa visión sea una realidad alcanzable y medible.
       </p>
     </div>
     <div class="section-visual">
       <div class="section-img-wrap">
-        <img src="./assets/imgs/huella.jpg" alt="Visión COINAM" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <img src="./assets/imgs/vision.png" alt="Visión COINAM" style="width:100%;height:100%;object-fit:contain;display:block;" />
       </div>
-      <div class="section-badge">V</div>
+      <div class="section-badge"><img src="assets/imgs/logo-transparente.png" alt="COINAM" /></div>
     </div>
   </article>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">MN<span>T</span>N</div>
+  <a href="index.html" class="footer-logo"><img src="assets/imgs/logo-transparente.png" alt="COINAM logo" width="50" height="43" /> COINAM</a>
   <ul class="footer-links">
-    <li><a href="#">Privacy Policy</a></li>
-    <li><a href="#">Terms of Use</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+    <li><a href="index.html">Servicios</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
   </ul>
-  <p class="footer-copy">&copy; 2024 MNTN. All rights reserved.</p>
+  <p class="footer-copy">&copy; <span id="footer-year"></span> <span class="brand">COINAM</span>. Todos los derechos reservados.</p>
 </footer>
 
 <script src="main.js"></script>

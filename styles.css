@@ -7,6 +7,9 @@
   --mid:     #112233;
   --text:    #ffffff;
   --muted:   rgba(255,255,255,0.55);
+  --white:   #ffffff;
+  --blue:    #1a6aad;
+  --green:   #4CAF50;
 }
 
 html { scroll-behavior: smooth; }
@@ -21,6 +24,8 @@ body {
 }
 
 ::selection { background: var(--gold); color: #000; }
+
+.brand { color: #1a6aad; }
 
 /* ── NAV ── */
 nav {
@@ -304,13 +309,13 @@ nav.scrolled {
   border-radius: 4px;
   overflow: hidden;
   aspect-ratio: 4/5;
-  background: var(--mid);
+  background: var(--white);
 }
 .section-img-wrap::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--gold);
+  background: var(--white);
   opacity: 0.08;
   z-index: 1;
 }
@@ -325,19 +330,18 @@ nav.scrolled {
   position: absolute;
   top: -1.5rem;
   right: -1.5rem;
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  border: 1px solid rgba(251,215,132,0.3);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  font-style: italic;
-  color: var(--gold);
   background: var(--darker);
   z-index: 2;
+}
+
+.section-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* ── DIVIDER ── */
@@ -359,13 +363,17 @@ footer {
 }
 
 .footer-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Lato', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: #1a6aad;
+  -webkit-text-stroke: 0.5px #1a6aad;
+  text-decoration: none;
 }
-.footer-logo span { color: var(--gold); }
 
 .footer-links {
   display: flex;

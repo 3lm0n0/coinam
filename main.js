@@ -40,3 +40,7 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 sections.forEach(s => io.observe(s));
+
+// Año dinámico en el footer
+const yearEl = document.getElementById('footer-year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
