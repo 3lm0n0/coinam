@@ -29,6 +29,38 @@ if (navToggle && navLinks) {
 }
 
 
+// Horizontal scroll panels
+const hscrollSection = document.querySelector('.hscroll-section');
+const hscrollTrack = document.querySelector('.hscroll-track');
+const progressFill = document.querySelector('.hscroll-progress-fill');
+const curEl = document.querySelector('.hscroll-counter .cur');
+const hscrollHint = document.querySelector('.hscroll-hint');
+
+if (hscrollSection && hscrollTrack) {
+  const numPanels = hscrollTrack.children.length;
+
+  function updateHScroll() {
+    const rect = hscrollSection.getBoundingClientRect();
+    const scrolled = -rect.top;
+    const scrollableHeight = hscrollSection.offsetHeight - window.innerHeight;
+    const progress = Math.max(0, Math.min(1, scrolled / scrollableHeight));
+
+    hscrollTrack.style.transform = 'translateX(' + (-progress * (numPanels - 1) * window.innerWidth) + 'px)';
+
+    if (progressFill) progressFill.style.width = (progress * 100) + '%';
+
+    if (curEl) {
+      const idx = Math.min(numPanels - 1, Math.round(progress * (numPanels - 1)));
+      curEl.textContent = String(idx + 1).padStart(2, '0');
+    }
+
+    if (hscrollHint) hscrollHint.style.opacity = progress > 0.02 ? '0' : '1';
+  }
+
+  window.addEventListener('scroll', updateHScroll, { passive: true });
+  updateHScroll();
+}
+
 // Intersection Observer for section reveals
 const sections = document.querySelectorAll('[data-section]');
 const io = new IntersectionObserver((entries) => {
