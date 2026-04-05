@@ -11,8 +11,8 @@
   --blue:    #1a6aad;
   --green:   #2e7d32;
   --blue-navy: #0B1D3F;
-  --bg-gradient: linear-gradient(180deg, #1b3550 0%, #122638 100%);
-  --bg-gradient-inv: linear-gradient(180deg, #122638 0%, #1b3550 100%);
+  --bg-gradient: linear-gradient(180deg, #111f30 0%, #0a1520 100%);
+  --bg-gradient-inv: linear-gradient(180deg, #0a1520 0%, #111f30 100%);
 }
 
 html { scroll-behavior: smooth; }
