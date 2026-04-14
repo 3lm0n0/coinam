@@ -4,142 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contacto — COINAM</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Contactá a COINAM para recibir una propuesta personalizada en consultoría ambiental, seguridad e higiene y cumplimiento legal. Buenos Aires, Argentina." />
+  <meta name="keywords" content="contacto COINAM, consultoría ambiental Buenos Aires, asesoramiento ambiental, ingeniería ambiental Argentina" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="COINAM" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contacto — COINAM" />
+  <meta property="og:description" content="Contanos sobre tu empresa y tu proyecto. Nuestro equipo te responderá con una propuesta personalizada en consultoría ambiental." />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="COINAM" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Contacto — COINAM" />
+  <meta name="twitter:description" content="Contactá a COINAM para recibir asesoramiento personalizado en ingeniería ambiental. Buenos Aires, Argentina." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
   <link rel="icon" href="assets/imgs/favicon.ico" />
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    /* Hero estático */
-    .page-hero {
-      position: relative;
-      height: 60vh;
-      min-height: 420px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-    }
-    .page-hero-img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-    }
-    .page-hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to right,
-        rgba(8,15,23,0.85) 0%,
-        rgba(8,15,23,0.50) 60%,
-        rgba(8,15,23,0.20) 100%
-      );
-      z-index: 1;
-    }
-    .page-hero-content {
-      position: relative;
-      z-index: 10;
-      padding: 0 4rem;
-      max-width: 700px;
-    }
-    .page-hero-content h1 {
-      font-family: 'Lato', sans-serif;
-      font-size: clamp(2.4rem, 5vw, 4.5rem);
-      font-weight: 900;
-      line-height: 1.1;
-    }
-    .page-hero-content h1 em {
-      font-style: italic;
-      color: var(--gold);
-    }
-    .page-hero-line {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 1px;
-      height: 60px;
-      background: linear-gradient(to bottom, transparent, var(--gold));
-      z-index: 10;
-    }
-
-    /* Contacto layout */
-    .contact-wrapper {
-      background: var(--bg-gradient);
-      padding: 8rem 4rem;
-    }
-    .contact-grid {
-      max-width: 700px;
-      margin: 0 auto;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .contact-grid.visible { opacity: 1; transform: translateY(0); }
-
-    /* Info lado izquierdo */
-    .contact-info { }
-    .contact-info .section-heading { margin-bottom: 1rem; }
-    .contact-info > p {
-      font-size: 0.95rem;
-      line-height: 1.85;
-      color: var(--muted);
-      margin-bottom: 3rem;
-      max-width: 420px;
-    }
-
-    .contact-detail {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-    .contact-detail-item {
-      display: flex;
-      gap: 1.2rem;
-      align-items: flex-start;
-    }
-    .contact-detail-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 1px solid rgba(251,215,132,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: var(--gold);
-      font-size: 1rem;
-    }
-    .contact-detail-text strong {
-      display: block;
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.3rem;
-    }
-    .contact-detail-text span,
-    .contact-detail-text a {
-      font-size: 0.95rem;
-      color: var(--muted);
-      line-height: 1.6;
-      text-decoration: none;
-    }
-    .contact-detail-text a:hover {
-      color: var(--gold);
-    }
-
-    /* Nav link activo */
-    .nav-links a.active { color: var(--gold); }
-
-    @media (max-width: 900px) {
-      .page-hero-content { padding: 0 2rem; }
-      .contact-wrapper { padding: 6rem 2rem; }
-      .contact-grid { }
-    }
-  </style>
 </head>
 <body>
 
@@ -175,7 +62,7 @@
     <!-- Info -->
     <div class="contact-info">
       <p class="section-number">Contacto</p>
-      <h2 class="section-heading">Estamos para <em style="color:var(--gold);font-style:italic;">ayudarte.</em></h2>
+      <h2 class="section-heading">Estamos para <em class="accent">ayudarte.</em></h2>
       <p>
         Contanos sobre tu empresa y tu proyecto. <br />
         Nuestro equipo te responderá con una propuesta personalizada.
