@@ -1,78 +1,74 @@
-// Nav scroll effect
+// Nav: scroll effect + active link highlight
 const nav = document.getElementById('nav');
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
-});
+  highlightActiveSection();
+}, { passive: true });
+
+function highlightActiveSection() {
+  let current = '';
+  sections.forEach(section => {
+    if (window.scrollY >= section.offsetTop - 120) {
+      current = section.getAttribute('id');
+    }
+  });
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+  });
+}
 
 // Hamburger menu
 const navToggle = document.getElementById('nav-toggle');
-const navLinks = document.getElementById('nav-links');
-if (navToggle && navLinks) {
+const navMenu   = document.getElementById('nav-links');
+
+if (navToggle && navMenu) {
   navToggle.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
+    const open = navMenu.classList.toggle('open');
     navToggle.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', open);
   });
-  // Cerrar al hacer click en un link
-  navLinks.querySelectorAll('a').forEach(a => {
+  navMenu.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
-      navLinks.classList.remove('open');
+      navMenu.classList.remove('open');
       navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', false);
     });
   });
-  // Cerrar al hacer click fuera
   document.addEventListener('click', (e) => {
     if (!nav.contains(e.target)) {
-      navLinks.classList.remove('open');
+      navMenu.classList.remove('open');
       navToggle.classList.remove('open');
     }
   });
 }
 
-
-// Horizontal scroll panels
-const hscrollSection = document.querySelector('.hscroll-section');
-const hscrollTrack = document.querySelector('.hscroll-track');
-const progressFill = document.querySelector('.hscroll-progress-fill');
-const curEl = document.querySelector('.hscroll-counter .cur');
-const hscrollHint = document.querySelector('.hscroll-hint');
-
-if (hscrollSection && hscrollTrack) {
-  const numPanels = hscrollTrack.children.length;
-
-  function updateHScroll() {
-    const rect = hscrollSection.getBoundingClientRect();
-    const scrolled = -rect.top;
-    const scrollableHeight = hscrollSection.offsetHeight - window.innerHeight;
-    const progress = Math.max(0, Math.min(1, scrolled / scrollableHeight));
-
-    hscrollTrack.style.transform = 'translateX(' + (-progress * (numPanels - 1) * window.innerWidth) + 'px)';
-
-    if (progressFill) progressFill.style.width = (progress * 100) + '%';
-
-    if (curEl) {
-      const idx = Math.min(numPanels - 1, Math.round(progress * (numPanels - 1)));
-      curEl.textContent = String(idx + 1).padStart(2, '0');
-    }
-
-    if (hscrollHint) hscrollHint.style.opacity = progress > 0.02 ? '0' : '1';
-  }
-
-  window.addEventListener('scroll', updateHScroll, { passive: true });
-  updateHScroll();
-}
-
-// Intersection Observer for section reveals
-const sections = document.querySelectorAll('[data-section]');
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    const target = document.querySelector(anchor.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
     }
   });
-}, { threshold: 0.15 });
+});
 
-sections.forEach(s => io.observe(s));
+// Reveal on scroll (Intersection Observer)
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
 
-// Año dinámico en el footer
+revealEls.forEach(el => io.observe(el));
+
+// Footer year
 const yearEl = document.getElementById('footer-year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
